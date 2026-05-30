@@ -72,7 +72,6 @@ def analyze_complaint(text: str) -> dict:
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": f"[민원 내용]\n{text}"},
         ],
-        temperature=0.3,
         max_completion_tokens=1500,
     )
     raw = response.choices[0].message.content.strip()
