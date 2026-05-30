@@ -33,6 +33,8 @@ JSON 외의 다른 텍스트나 마크다운은 절대 포함하지 마세요.
 - 보험: 보험료, 보험금 지급 관련
 - 카드: 카드 발급, 한도, 청구 관련
 - 기타: 위 항목에 해당하지 않는 경우
+
+반드시 JSON만 출력하세요. 설명, 마크다운, ```json 코드블록 절대 금지.
 """
 
 CATEGORY_EMOJI = {
@@ -59,7 +61,6 @@ SAMPLE_COMPLAINTS = [
     "펀드 가입 시 직원이 원금 보장된다고 했으나, 실제로는 원금 손실 가능성이 있는 상품이었습니다.",
     "타 은행 대비 금리가 너무 낮아 손해를 보고 있습니다. 금리 조정을 요청합니다.",
     "ATM 수수료가 갑자기 인상되었는데 사전 공지를 받지 못했습니다.",
-    "대출 심사에서 별다른 이유 없이 거절당했습니다. 구체적인 사유를 알고 싶습니다.",
 ]
 
 
@@ -72,7 +73,7 @@ def analyze_complaint(text: str) -> dict:
             {"role": "user", "content": f"[민원 내용]\n{text}"},
         ],
         temperature=0.3,
-        max_tokens=800,
+        max_tokens=1500,
     )
     raw = response.choices[0].message.content.strip()
     return json.loads(raw)
