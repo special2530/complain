@@ -67,7 +67,7 @@ SAMPLE_COMPLAINTS = [
 # ── 분석 함수 ─────────────────────────────────────────────
 def analyze_complaint(text: str) -> dict:
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-5.5",
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": f"[민원 내용]\n{text}"},
